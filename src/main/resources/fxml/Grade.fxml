@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="APNL_MAIN" prefHeight="684.0" prefWidth="597.0" style="-fx-background-color: LightGrey;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gunn.student_grades_project.FXMLController">
+<AnchorPane id="AnchorPane" fx:id="APNL_MAIN" prefHeight="684.0" prefWidth="597.0" style="-fx-background-color: LightGrey;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gunn.student_grades_project.FXMLController_Grades">
    <children>
       <Label fx:id="LBL_TITLE" alignment="TOP_CENTER" layoutX="169.0" layoutY="49.0" style="-fx-background-color: LightGrey;" text="Student Grade Calculator" underline="true">
          <font>
@@ -26,7 +26,7 @@
       <TextField fx:id="TXTF_TEST2" layoutX="56.0" layoutY="190.0" prefHeight="26.0" prefWidth="36.0" />
       <TextField fx:id="TXTF_TEST3" layoutX="56.0" layoutY="229.0" prefHeight="26.0" prefWidth="36.0" />
       <TextField fx:id="TXTF_TEST4" layoutX="56.0" layoutY="267.0" prefHeight="26.0" prefWidth="36.0" />
-      <Button fx:id="BTN_ADD" layoutX="251.0" layoutY="156.0" mnemonicParsing="false" text="Add" />
+      <Button fx:id="BTN_ADD" layoutX="251.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#addClick" text="Add" />
       <Button fx:id="BTN_SAVG" layoutX="324.0" layoutY="157.0" mnemonicParsing="false" text="Student Average" />
       <Button fx:id="BTN_LIST" layoutX="251.0" layoutY="199.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="40.0" text="List" />
       <Button fx:id="BTN_CAVG" layoutX="324.0" layoutY="199.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="105.0" text="Class Average" />
