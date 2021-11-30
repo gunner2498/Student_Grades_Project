@@ -50,8 +50,8 @@ public class FXMLController_Grades implements Initializable {
     
     //Variables
     
-    int round=0;
-    double[ ][ ] Class = new double[14][6];
+    int round = 0;
+    String Class[ ][ ] = new String[14][7];
     int cAvg = 0;
     
     @FXML
@@ -59,22 +59,24 @@ public class FXMLController_Grades implements Initializable {
     {
      
     if (round < 15){
-    Class[round][0]= Integer.parseInt(TXTF_NAME1.getText());
-    Class[round][1]= Integer.parseInt(TXTF_NAME2.getText());
-    Class[round][2]= Integer.parseInt(TXTF_TEST1.getText());
-    Class[round][3]= Integer.parseInt(TXTF_TEST2.getText());
-    Class[round][4]= Integer.parseInt(TXTF_TEST3.getText());
-    Class[round][5]= Integer.parseInt(TXTF_TEST4.getText());
-    Class[round][6]= (Class[round][2] + Class[round][3] + Class[round][4] + Class[round][5])/4 ;
+    Class[round][0]= TXTF_NAME1.getText();
+    Class[round][1]= TXTF_NAME2.getText();
+    Class[round][2]= TXTF_TEST1.getText();
+    Class[round][3]= TXTF_TEST2.getText();
+    Class[round][4]= TXTF_TEST3.getText();
+    Class[round][5]= TXTF_TEST4.getText();
+    Class[round][6]= ""+ ((Integer.parseInt(Class[round][3]) + Integer.parseInt(Class[round][4]) + Integer.parseInt(Class[round][5]) + Integer.parseInt(Class[round][2]))/4);//error here
     
-    round = round+1;
     
+    round++;
+    
+    listClick(event);
     }
 
     else{ 
     TXTA_OUTPUT.setText("Too many Students in program, Maximum Fifteen");
     }
-    TXTF_NAME1.setText(""); //resetting text fields not working?
+    TXTF_NAME1.setText(""); 
     TXTF_NAME1.setText("");
     TXTF_NAME2.setText("");
     TXTF_TEST1.setText("");
@@ -83,14 +85,16 @@ public class FXMLController_Grades implements Initializable {
     TXTF_TEST4.setText("");  
     
     }
-
+    
+    //TXTA_OUTPUT.getText()+ this so the text doesnt get replaced
     
     @FXML
     void listClick(MouseEvent event) 
     {
      TXTA_OUTPUT.setText(" ");
      for (int i=0; i <round;i++){
-     TXTA_OUTPUT.setText("Name: " + Class[i][0] + Class[i][1] + "Marks:" + Class[i][2] + "%, " + Class[i][3] + "%, " + Class[i][4] + "%, " + Class[i][5] + "%\n" );
+     TXTA_OUTPUT.setText(TXTA_OUTPUT.getText()+"Name: " +  Class[i][0] + " " +  Class[i][1] + " Marks: " + Integer.parseInt(Class[i][2]) + "%, " + Integer.parseInt(Class[i][3]) + "%, " + Integer.parseInt(Class[i][4]) + "%, " + Integer.parseInt(Class[i][5]) + "%" + "\n" );
+     
      }
     }
     
@@ -98,17 +102,19 @@ public class FXMLController_Grades implements Initializable {
     void sAvgClick(MouseEvent event) {
      TXTA_OUTPUT.setText("");
      for (int i=0; i <round;i++){
-     TXTA_OUTPUT.setText("Name: " + Class[i][0] + Class[i][1] + "Marks:" + Class[i][2] + "%, " + Class[i][3] + "%, " + Class[i][4] + "%, " + Class[i][5] + "%, " + "Avg: " + Class[i][6] + "%\n");
+     TXTA_OUTPUT.setText(TXTA_OUTPUT.getText()+"Name: " + Class[i][0] + " " + Class[i][1] + " Marks: " + Integer.parseInt(Class[i][2]) + "%, " + Integer.parseInt(Class[i][3]) + "%, " + Integer.parseInt(Class[i][4]) + "%, " + Integer.parseInt(Class[i][5]) + "%, " + "Avg: " + Integer.parseInt(Class[i][6]) + "%\n");
+    
      }
     }
     @FXML
     void cAvgClick(MouseEvent event) {
     
-     //not working, can you for loop and add? cAvg = (Class[0][6] + Class[2][6] + Class[3][6] + Class[4][6 + Class[5][6] + Class[6][6] + Class[7][6] + Class[8][6] + Class[9][6] + Class[10][6] + Class[11][6] + Class[12][6] + Class[13][6] + Class[14][6])/round;
+    cAvg = (Integer.parseInt(Class[2][6]) + Integer.parseInt(Class[0][6]) + Integer.parseInt(Class[3][6]) + Integer.parseInt(Class[4][6]) + Integer.parseInt(Class[5][6]) + Integer.parseInt(Class[6][6]) + Integer.parseInt(Class[7][6]) + Integer.parseInt(Class[8][6]) + Integer.parseInt(Class[9][6]) + Integer.parseInt(Class[10][6]) + Integer.parseInt(Class[11][6]) + Integer.parseInt(Class[12][6]) + Integer.parseInt(Class[13][6]) + Integer.parseInt(Class[14][6]))/round;
         
      TXTA_OUTPUT.setText("");
      for (int i=0; i <round;i++){
-     TXTA_OUTPUT.setText("Name: " + Class[i][0] + Class[i][1] + "Marks:" + Class[i][2] + "%, " + Class[i][3] + "%, " + Class[i][4] + "%, " + Class[i][5] + "%, " + "Avg: " + Class[i][6] + "%\n");
+     TXTA_OUTPUT.setText("Name: " + Class[i][0] + " " + Class[i][1] + " Marks: " + Integer.parseInt(Class[i][2]) + "%, " + Integer.parseInt(Class[i][3]) + "%, " + Integer.parseInt(Class[i][4]) + "%, " + Integer.parseInt(Class[i][5]) + "%, " + "Avg: " + Integer.parseInt(Class[i][6]) + "%\n");
+     TXTA_OUTPUT.setText("Class Average is: " + cAvg + "%");
      }
     }
     @FXML
