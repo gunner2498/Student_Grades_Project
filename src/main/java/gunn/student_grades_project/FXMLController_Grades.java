@@ -8,7 +8,6 @@ Date; 25/11/21
 Assignment#; 2
 Description; Create a 2D array based grade calculator
  */
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -52,20 +51,20 @@ public class FXMLController_Grades implements Initializable {
     @FXML
     void addClick(MouseEvent event) {
 
-        if (round < 15) {
+        if (round < 15) { //Main 2D array
             Class[round][0] = TXTF_NAME1.getText();
             Class[round][1] = TXTF_NAME2.getText();
             Class[round][2] = TXTF_TEST1.getText();
             Class[round][3] = TXTF_TEST2.getText();
             Class[round][4] = TXTF_TEST3.getText();
             Class[round][5] = TXTF_TEST4.getText();
-            Class[round][6] = "" + ((Integer.parseInt(Class[round][3]) + Integer.parseInt(Class[round][4]) + Integer.parseInt(Class[round][5]) + Integer.parseInt(Class[round][2])) / 4);//error here
+            Class[round][6] = "" + ((Integer.parseInt(Class[round][3]) + Integer.parseInt(Class[round][4]) + Integer.parseInt(Class[round][5]) + Integer.parseInt(Class[round][2])) / 4);//Student averages are added on to array for simplicity
 
             round++;
 
             listClick(event);
         } else {
-            TXTA_OUTPUT.setText("Too many Students in program, Maximum Fifteen");
+            TXTA_OUTPUT.setText("Too many Students in program, Maximum Fifteen"); //backup clear system for overflow students
         }
         TXTF_NAME1.setText("");
         TXTF_NAME1.setText("");
@@ -79,7 +78,7 @@ public class FXMLController_Grades implements Initializable {
 
     //TXTA_OUTPUT.getText()+ this so the text doesnt get replaced
     @FXML
-    void listClick(MouseEvent event) {
+    void listClick(MouseEvent event) { //Lists all students
         TXTA_OUTPUT.setText(" ");
         for (int i = 0; i < round; i++) {
             TXTA_OUTPUT.setText(TXTA_OUTPUT.getText() + "Name: " + Class[i][0] + " " + Class[i][1] + " Marks: " + Integer.parseInt(Class[i][2]) + "%, " + Integer.parseInt(Class[i][3]) + "%, " + Integer.parseInt(Class[i][4]) + "%, " + Integer.parseInt(Class[i][5]) + "%" + "\n");
@@ -88,7 +87,7 @@ public class FXMLController_Grades implements Initializable {
     }
 
     @FXML
-    void sAvgClick(MouseEvent event) {
+    void sAvgClick(MouseEvent event) { //Displays all students averages
         TXTA_OUTPUT.setText("");
         for (int i = 0; i < round; i++) {
             TXTA_OUTPUT.setText(TXTA_OUTPUT.getText() + "Name: " + Class[i][0] + " " + Class[i][1] + " Marks: " + Integer.parseInt(Class[i][2]) + "%, " + Integer.parseInt(Class[i][3]) + "%, " + Integer.parseInt(Class[i][4]) + "%, " + Integer.parseInt(Class[i][5]) + "%, " + "Avg: " + Integer.parseInt(Class[i][6]) + "%\n");
@@ -97,18 +96,17 @@ public class FXMLController_Grades implements Initializable {
     }
 
     @FXML
-    void cAvgClick(MouseEvent event) {
-        cAvg=0;
+    void cAvgClick(MouseEvent event) { //Displays classes average
+        cAvg = 0;
         for (int i = 0; i < round; i++) {
-            cAvg=cAvg+ Integer.parseInt(Class[i][6]);
+            cAvg = cAvg + Integer.parseInt(Class[i][6]);
         }
-        cAvg=cAvg/round;
-        
-       // cAvg = (Integer.parseInt(Class[0][6]) + Integer.parseInt(Class[1][6]) + Integer.parseInt(Class[2][6]) + Integer.parseInt(Class[3][6]) + Integer.parseInt(Class[4][6]) + Integer.parseInt(Class[5][6]) + Integer.parseInt(Class[6][6]) + Integer.parseInt(Class[7][6]) + Integer.parseInt(Class[8][6]) + Integer.parseInt(Class[9][6]) + Integer.parseInt(Class[10][6]) + Integer.parseInt(Class[11][6]) + Integer.parseInt(Class[12][6]) + Integer.parseInt(Class[13][6]) + Integer.parseInt(Class[14][6])) / round;
-        TXTA_OUTPUT.setText(TXTA_OUTPUT.getText() + "Class Average is: " + cAvg + "%");
+        cAvg = cAvg / round;
+
+        TXTA_OUTPUT.setText(TXTA_OUTPUT.getText() + "Class Average is: " + cAvg + "%"); //Displays class average
     }
 
-    @FXML
+    @FXML //exit button
     void exitClick(MouseEvent event) {
         System.exit(0);
     }
